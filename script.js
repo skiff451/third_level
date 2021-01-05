@@ -1,33 +1,5 @@
 
-
 function DataTable(config, data) {
-
-  const tableHTML = `
-    <table>
-    <thead>
-    <tr>
-      <th>№</th>
-      <th>Имя</th>
-      <th>Фамилия</th>
-      <th>Возраст</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>1</td>
-      <td>Вася</td>
-      <td>Петров</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Вася</td>
-      <td>Васечкин</td>
-      <td>15</td>
-    </tr>
-    </tbody>
-  </table>
-    `
 
   const parentElement = document.querySelector(config.parent),
     columnsNames = config.columns.map(col => col.title),
@@ -35,14 +7,10 @@ function DataTable(config, data) {
 
   const table = createTableElement('table', createTableHead(columnsNames))
   table.append(createTableBody(columnsValues, data))
-
-  console.log(table);
-  console.log(config.parent);
-
   parentElement.append(table);
 }
 
-function createTableElement(elementName = 'td', content) {
+function createTableElement(elementName = 'td', content = 'null') {
   const element = document.createElement(elementName);
   if ((content.length !== undefined) && !(typeof content === 'string')) {// iterable but ot a string
     content.forEach(item => element.append(item));
@@ -51,7 +19,6 @@ function createTableElement(elementName = 'td', content) {
   }
   return element;
 }
-
 
 function createTableHead(columnsNames) {
   columnsNames.unshift('№');
@@ -88,6 +55,8 @@ const config1 = {
 const users = [
   { id: 30050, name: 'Вася', surname: 'Петров', age: 12 },
   { id: 30051, name: 'Вася', surname: 'Васечкин', age: 15 },
+  { id: 30052, name: 'Петя', surname: 'Пяточкин', age: 23 },
+  { id: 30053, name: 'Иван', surname: 'Иванов', age: 66 },
 ];
 
 DataTable(config1, users);
