@@ -12,7 +12,9 @@ function DataTable(config, data) {
 
 function createTableElement(elementName = 'td', content = 'null') {
   const element = document.createElement(elementName);
-  if ((content.length !== undefined) && !(typeof content === 'string')) {// iterable but ot a string
+  //(content.length !== undefined) && !(typeof content === 'string')
+  
+  if (Array.isArray(content)) {// iterable but ot a string
     content.forEach(item => element.append(item));
   } else {
     element.append(content);
