@@ -12,8 +12,6 @@ function DataTable(config, data) {
 
 function createTableElement(elementName = 'td', content = 'null') {
   const element = document.createElement(elementName);
-  //(content.length !== undefined) && !(typeof content === 'string')
-  
   if (Array.isArray(content)) {// iterable but ot a string
     content.forEach(item => element.append(item));
   } else {
@@ -24,11 +22,10 @@ function createTableElement(elementName = 'td', content = 'null') {
 
 function createTableHead(columnsNames) {
   columnsNames.unshift('№');
-  const tdArr = columnsNames.map(item => {
+  const thArr = columnsNames.map(item => {
     return createTableElement('th', item);
   }),
-    trHead = createTableElement('tr', tdArr);
-  console.log('arr', tdArr);
+    trHead = createTableElement('tr', thArr);
   return createTableElement('thead', trHead);
 }
 
